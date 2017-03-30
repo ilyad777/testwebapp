@@ -1,6 +1,5 @@
 package controller;
 
-import entity.ArticlesEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +14,6 @@ public class ControllerServlet extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArticlesEntity articlesEntity = new ArticlesEntity();
-        response.getWriter().write(articlesEntity.getText());
+        
     }
 }
