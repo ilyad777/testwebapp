@@ -6,14 +6,6 @@
 
 
   <display-name>Archetype Created Web Application</display-name>
-    <servlet>
-        <servlet-name>ControllerServlet</servlet-name>
-        <servlet-class>controller.ControllerServlet</servlet-class>
-    </servlet>
 
-    <servlet-mapping>
-        <servlet-name>ControllerServlet</servlet-name>
-        <url-pattern>/management</url-pattern>
-    </servlet-mapping>
 
 </web-app>

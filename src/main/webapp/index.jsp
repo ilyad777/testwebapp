@@ -1,8 +1,10 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<c:import url="views/fragmants/header.jsp"/>
+<c:import url="views/fragments/header.jspf"/>
 <body>
 
 <div id="templatemo_wrapper">
@@ -21,14 +23,12 @@
         <div class="cleaner_h40"></div>
         <div id="templatemo_sidebar">
 
-            <h4>Categories</h4>
+            <h4>Articles</h4>
             <ul class="templatemo_list">
-                <li><a href="#" target="_parent">Curabitur sed</a></li>
-                <li><a href="#" target="_parent">Praesent adipiscing</a></li>
-                <li><a href="#" target="_parent">Duis sed justo</a></li>
-                <li><a href="#" target="_parent">Mauris vulputate</a></li>
-                <li><a href="#">Nam auctor</a></li>
-                <li><a href="#">Aliquam quam</a></li>
+                <c:forEach var="article" items="${articles}">
+                    <li><a href="article?id=${article.id}">${article.title}</a></li>
+
+                </c:forEach>
             </ul>
 
         </div> <!-- end of templatemo_sidebar -->
@@ -39,24 +39,32 @@
 
         <div id="templatemo_main">
 
-            <div class="post_section">
-                <c:import url="views/components/post.jsp"/>
+            <c:forEach var="article" items="${articles}">
+                <div class="post_section">
 
-            </div>
+                    <h2>${article.title}</h2>
 
-            <div class="post_section">
-                <c:import url="views/components/post.jsp"/>
-            </div>
+                        ${article.date} | <strong>Author:</strong> John | <strong>Category:</strong> <a href="#">Freebies</a>
+
+                    <img src="views/css/images/templatemo_image_01.jpg" alt="image 1"/>
+
+                    <p>${fn:substring(article.text,0,300)}</p>
+                    <a href="article?id=${article.id}">Читать...</a>
+
+                </div>
+            </c:forEach>
         </div>
         <div class="cleaner"></div>
     </div>
     <!-- end of templatemo_main -->
     <div class="cleaner_h20"></div>
 
-    <c:import url="views/fragmants/footer.jsp"/>
+    <c:import url="views/fragments/footer.jspf"/>
 
     <div class="cleaner"></div>
 </div> <!-- end of warpper -->
 
 </body>
 </html>
+
+
